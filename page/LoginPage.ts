@@ -5,6 +5,7 @@ export class LoginPage extends CommonPage {
   private accountInput: Locator;
   private passwordInput: Locator;
   private loginButton: Locator;
+  private forgotPasswordLink: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +14,7 @@ export class LoginPage extends CommonPage {
     this.loginButton = page.getByRole("button", {
       name: "Đăng nhập",
     });
+    this.forgotPasswordLink = page.getByText(/Quên mật khẩu/i);
   }
    async enterAccountInput(account: string) {
     await this.accountInput.fill(account);
@@ -30,5 +32,9 @@ export class LoginPage extends CommonPage {
     await this.enterAccountInput(account);
     await this.enterPasswordInput(password);
     await this.clickLoginButton();
+  }
+
+  async clickForgotPassword() {
+    await this.forgotPasswordLink.click();
   }
 }

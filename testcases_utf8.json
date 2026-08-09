@@ -1,0 +1,396 @@
+[
+  {
+    "TCs ID": "1. Dashboard"
+  },
+  {
+    "TCs ID": "D_01",
+    "Feature": "Header",
+    "Sub-feature": "Hiển thị logo",
+    "Test Case": "Kiểm tra logo CyberSoft được hiển thị trên header",
+    "Pre-conditions": "Người dùng truy cập trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Quan sát khu vực header",
+    "Expected": "Logo CyberSoft hiển thị đúng vị trí, không bị méo hoặc che khuất",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "URL trang chủ: https://demo1.cybersoft.edu.vn/"
+  },
+  {
+    "TCs ID": "D_02",
+    "Feature": "Header",
+    "Sub-feature": "Menu Điều Hướng",
+    "Test Case": "Kiểm tra các menu trên header được hiển thị đầy đủ",
+    "Pre-conditions": "Trang chủ đã load thành công",
+    "Steps": "1. Quan sát header\n2. Kiểm tra các menu: Lịch Chiếu, Cụm Rạp, Tin Tức, Ứng Dụng",
+    "Expected": "Tất cả menu hiển thị đúng tên, đúng thứ tự và có thể click",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Danh sách menu trên header"
+  },
+  {
+    "TCs ID": "D_03",
+    "Feature": "Header",
+    "Sub-feature": "Điều hướng Lịch Chiếu",
+    "Test Case": "Kiểm tra điều hướng đến trang Lịch Chiếu",
+    "Pre-conditions": "Người dùng đang ở trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Click Lịch chiếu",
+    "Expected": "Người dùng được chuyển đến trang Lịch Chiếu đúng chức năng",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Lịch Chiếu"
+  },
+  {
+    "TCs ID": "D_04",
+    "Feature": "Header",
+    "Sub-feature": "Điều hướng Cụm Rạp",
+    "Test Case": "Kiểm tra điều hướng đến trang Cụm Rạp",
+    "Pre-conditions": "Người dùng đang ở trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Click Cụm Rạp",
+    "Expected": "Người dùng được chuyển đến trang Cụm Rạp đúng chức năng",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Cụm Rạp"
+  },
+  {
+    "TCs ID": "D_05",
+    "Feature": "Header",
+    "Sub-feature": "Điều hướng Tin Tức",
+    "Test Case": "Kiểm tra điều hướng đến trang Tin Tức",
+    "Pre-conditions": "Người dùng đang ở trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Click Tin Tức",
+    "Expected": "Người dùng được chuyển đến trang Tin Tức đúng chức năng",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Tin Tức"
+  },
+  {
+    "TCs ID": "D_06",
+    "Feature": "Header",
+    "Sub-feature": "Điều hướng Ứng Dụng",
+    "Test Case": "Kiểm tra điều hướng đến trang Ứng Dụng",
+    "Pre-conditions": "Người dùng đang ở trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Click Ứng Dụng",
+    "Expected": "Người dùng được chuyển đến trang Ứng Dụng đúng chức năng",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Ứng Dụng"
+  },
+  {
+    "TCs ID": "D_07",
+    "Feature": "Header",
+    "Sub-feature": "Đăng nhập",
+    "Test Case": "Kiểm tra hiển thị và điều hướng chức năng Đăng Nhập",
+    "Pre-conditions": "Người dùng chưa đăng nhập",
+    "Steps": "1. Click biểu tượng hoặc text Đăng Nhập",
+    "Expected": "Màn hình đăng nhập được hiển thị",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Đăng nhập"
+  },
+  {
+    "TCs ID": "D_08",
+    "Feature": "Header",
+    "Sub-feature": "Đăng Ký",
+    "Test Case": "Kiểm tra hiển thị và điều hướng chức năng Đăng Ký",
+    "Pre-conditions": "Người dùng chưa đăng nhập",
+    "Steps": "1. Click biểu tượng hoặc text Đăng Ký",
+    "Expected": "Màn hình đăng ký được hiển thị",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Menu: Đăng ký"
+  },
+  {
+    "TCs ID": "D_09",
+    "Feature": "Banner",
+    "Sub-feature": "Hiển thị slider banner",
+    "Test Case": "Kiểm tra slider banner hiển thị hình ảnh",
+    "Pre-conditions": "Người dùng truy cập trang chủ",
+    "Steps": "1. Mở trang chủ\n2. Quan sát khu vực header nơi có slider banner",
+    "Expected": "Hình ảnh của slider banner được hiển thị rõ ràng, hình ảnh sắc nét, không bị bể\nNgười dùng có thể xem được hình của banner",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_10",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc Phim",
+    "Test Case": "Kiểm tra dropdown Phim hiển thị danh sách phim",
+    "Pre-conditions": "Trang chủ đã load thành công",
+    "Steps": "1. Click dropdown Phim",
+    "Expected": "Danh sách phim được hiển thị\nNgười dùng có thể chọn một phim",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "The Gentlemen/ Man of Steel/ AVATAR 2"
+  },
+  {
+    "TCs ID": "D_11",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc Phim",
+    "Test Case": "Tìm kiếm bằng chữ cái tên phim trong danh sách phim",
+    "Pre-conditions": "Trang chủ đã load thành công",
+    "Steps": "1. Click dropdown Phim\n2. Tại bàn phím, gõ chữ cái có trong tên phim",
+    "Expected": "Tên phim có ký tự trùng được hiển thị highlight ",
+    "Automation Status": "Cannot Auto",
+    "Results": "Passed",
+    "Test Data": "The Gentlemen/ Man of Steel/ AVATAR 2"
+  },
+  {
+    "TCs ID": "D_12",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc Rạp",
+    "Test Case": "Kiểm tra dropdown Rạp hiển thị danh sách rạp khi chưa chọn Phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nChưa chọn Phim",
+    "Steps": "1. Click dropdown Rạp",
+    "Expected": "Danh sách cụm rạp/rạp chiếu không được hiển thị",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_13",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc Rạp",
+    "Test Case": "Kiểm tra dropdown Rạp hiển thị danh sách rạp khi đã chọn Phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim",
+    "Steps": "1. Click dropdown Phim\n2. Chọn Phim\n3. Click dropdown Rạp",
+    "Expected": "Danh sách cụm rạp/rạp chiếu được hiển thị theo phim được chọn có suất chiếu tại rạp",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Phim: AVATAR 2"
+  },
+  {
+    "TCs ID": "D_14",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc ngày giờ chiếu",
+    "Test Case": "Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu khi chưa chọn Phim và Rạp",
+    "Pre-conditions": "Trang chủ đã load thành công\nChưa chọn Phim và Rạp",
+    "Steps": "1. Click dropdown Ngày giờ chiếu",
+    "Expected": "Danh sách các xuất chiếu không được hiển thị",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_15",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc ngày giờ chiếu",
+    "Test Case": "Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu đã chọn Phim và Rạp",
+    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim và Rạp",
+    "Steps": "1. Click dropdown Phim\n2. Chọn Phim\n3. Click dropdown Rạp\n4. Chọn Rạp\n5. Click dropdown Ngày giờ chiếu",
+    "Expected": "Danh sách các xuất chiếu được hiển thị theo phim và rạp được chọn\nNgày và giờ các xuất chiếu phải được hiển thị ở thời gian trong tương lai",
+    "Automation Status": "Automated",
+    "Results": "Failed",
+    "Test Data": "Phim: AVATAR 2\nRạp : CGV- Vivocity"
+  },
+  {
+    "TCs ID": "D_16",
+    "Feature": "Movie search",
+    "Sub-feature": "Bộ lọc ngày giờ chiếu",
+    "Test Case": "Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu khi chỉ chọn Phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nChỉ chọn Phim",
+    "Steps": "1. Click dropdown Phim\n2. Chọn Phim\n3. Click dropdown Ngày giờ chiếu",
+    "Expected": "Danh sách các xuất chiếu không được hiển thị",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Phim: AVATAR 2"
+  },
+  {
+    "TCs ID": "D_17",
+    "Feature": "Movie search",
+    "Sub-feature": "Mua vé ngay",
+    "Test Case": "Click nút 'Mua vé ngay' khi chưa chọn Phim + Rạp + Ngày giờ chiếu",
+    "Pre-conditions": "Trang chủ đã load thành công",
+    "Steps": "1. Click nút 'Mua vé ngay'",
+    "Expected": "Thông báo lỗi được xuất hiện dưới dạng modal với nội dung :\"Bạn chưa chọn phim. Vui lòng chọn phim\" cùng nút \"Đã hiểu\"\nModal lỗi sẽ biến mất khi người dùng click vào nút 'Đã hiểu\"",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_18",
+    "Feature": "Movie search",
+    "Sub-feature": "Mua vé ngay",
+    "Test Case": "Click nút 'Mua vé ngay' khi chỉ chọn Phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim ",
+    "Steps": "1. Chọn phim\n2. Click MUA VÉ NGAY",
+    "Expected": "Thông báo lỗi được xuất hiện dưới dạng modal với nội dung :\"Bạn chưa chọn Rạp. Vui lòng chọn Rạp\" cùng nút \"Đã hiểu\"\nModal lỗi sẽ biến mất khi người dùng click vào nút 'Đã hiểu\"",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Phim: AVATAR 2\n"
+  },
+  {
+    "TCs ID": "D_19",
+    "Feature": "Movie search",
+    "Sub-feature": "Mua vé ngay",
+    "Test Case": "Click nút 'Mua vé ngay' khi chỉ chọn Phim + Rạp",
+    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim và Rạp",
+    "Steps": "1. Chọn phim\n2. Chọn rạp\n3. Click MUA VÉ NGAY",
+    "Expected": "Thông báo lỗi được xuất hiện dưới dạng modal với nội dung :\"Bạn chưa chọn ngày giờ chiếu. Vui lòng chọn ngày giờ chiếu\" cùng nút \"Đã hiểu\"\nModal lỗi sẽ biến mất khi người dùng click vào nút 'Đã hiểu\"",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Phim: AVATAR 2\nRạp: CGV- VivoCity"
+  },
+  {
+    "TCs ID": "D_20",
+    "Feature": "Movie search",
+    "Sub-feature": "Mua vé ngay",
+    "Test Case": "Kiểm tra tìm kiếm suất chiếu với đầy đủ thông tin",
+    "Pre-conditions": "Có dữ liệu phim, rạp và suất chiếu",
+    "Steps": "1. Chọn phim\n2. Chọn rạp\n3. Chọn ngày giờ chiếu\n4. Click MUA VÉ NGAY",
+    "Expected": "Hệ thống chuyển đến màn hình chọn ghế hoặc màn hình đặt vé của suất chiếu đã chọn",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Phim: AVATAR 2\nRạp: CGV- VivoCity\nNgày giờ Chiếu: 07/10/2021 8:25"
+  },
+  {
+    "TCs ID": "D_21",
+    "Feature": "Movie listing",
+    "Sub-feature": "Hiển thị danh sách phim",
+    "Test Case": "Kiểm tra danh sách phim trên trang chủ được hiển thị",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Quan sát khu vực danh sách phim",
+    "Expected": "Các thẻ phim được hiển thị theo dạng grid/list\nMỗi thẻ gồm poster, nhãn độ tuổi, tên phim và mô tả\nHình ảnh của poster được hiển thị rõ ràng",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_22",
+    "Feature": "Movie listing",
+    "Sub-feature": "Hiển thị danh sách phim",
+    "Test Case": "Kiểm tra pagination của danh sách phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Kéo xuống dưới cùng của danh sách phim\n2. Chọn icon '..' để chuyển sang phân trang tiếp theo",
+    "Expected": "Người dùng có thể chuyển đến xem trang kế tiếp của phim\nDanh sách phim được cập nhật và hiển thị đúng các phim thuộc trang mới\nKhông hiển thị dữ liệu trùng lặp hoặc bị thiếu giữa các trang\nNếu không có thêm phim, hệ thống không cho phép chuyển sang trang tiếp theo\nHiển thị highlight tại phân trang mà người dùng đang đứng",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_23",
+    "Feature": "Movie listing",
+    "Sub-feature": "Thông tin phim",
+    "Test Case": "Kiểm tra thông tin hiển thị trên thẻ phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Kiểm tra từng thẻ phim",
+    "Expected": "Poster (hình ảnh) , tên phim, nhãn C18 và phần mô tả hiển thị đúng với dữ liệu backend\nMô tả quá dài được cắt bằng dấu ... không làm vỡ layout\nPoster hiển thị đầy đủ, đúng tỷ lệ, không bị vỡ hình",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_24",
+    "Feature": "Movie listing",
+    "Sub-feature": "Thông tin phim",
+    "Test Case": "Nhãn phân loại độ tuổi",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Quan sát nhãn trên từng poster",
+    "Expected": "Nhãn phân loại, ví dụ C18, hiển thị rõ ràng, đúng màu và đúng nội dung",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "Rating: C18"
+  },
+  {
+    "TCs ID": "D_25",
+    "Feature": "Movie listing",
+    "Sub-feature": "Thông tin phim",
+    "Test Case": "Hiển thị nút 'Play' trên poster và nút Mua Vé khi rê chuột vào item phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Truy cập màn hình danh sách phim.\n2. Di chuyển chuột đến một item phim.\n3. Quan sát item phim được chọn.",
+    "Expected": "Nút 'Play' và nút Mua vé được hiển thị khi rê chuột vào item phim được chọn",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_25",
+    "Feature": "Movie listing",
+    "Sub-feature": "Thông tin phim",
+    "Test Case": "Click nút 'Play' trên poster",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Truy cập màn hình danh sách phim.\n2. Di chuyển chuột đến một item phim.\n3. Ấn vào nút play trên poster.",
+    "Expected": "Người dùng có thể xem được video trailer của item phim được chọn",
+    "Automation Status": "Automated",
+    "Results": "Passed"
+  },
+  {
+    "TCs ID": "D_26",
+    "Feature": "Movie listing",
+    "Sub-feature": "Thông tin phim",
+    "Test Case": "Kiểm tra click vào hình poster hoặc nút 'Mua vé'",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
+    "Steps": "1. Click hình poster phim\nhoặc\n2. Click nút 'Mua vé'",
+    "Expected": "Người dùng được chuyển đến trang chi tiết phim tương ứng"
+  },
+  {
+    "TCs ID": "D_27",
+    "Feature": "UI/Responsive",
+    "Sub-feature": "Hiển thị trên desktop",
+    "Test Case": "Kiểm tra giao diện trên màn hình desktop",
+    "Pre-conditions": "Có trình duyệt desktop",
+    "Steps": "1. Quan sát phần mô tả dưới tên phim",
+    "Expected": "Header, bộ lọc và danh sách phim hiển thị đúng layout; không bị tràn ngang"
+  },
+  {
+    "TCs ID": "D_28",
+    "Feature": "UI/Responsive",
+    "Sub-feature": "Hiển thị trên tablet/mobile",
+    "Test Case": "Kiểm tra responsive trên màn hình nhỏ",
+    "Pre-conditions": "Có trình duyệt trên điện thoại/ tablet",
+    "Steps": "1. Mở DevTools\n2. Chọn viewport tablet/mobile\n3. Refresh trang",
+    "Expected": "Các thành phần tự co giãn hoặc chuyển layout phù hợp; text và nút không bị cắt"
+  },
+  {
+    "TCs ID": "D_29",
+    "Feature": "Loading",
+    "Sub-feature": "Trạng thái loading",
+    "Test Case": "Kiểm tra trạng thái loading khi tải dữ liệu phim",
+    "Pre-conditions": "API phim phản hồi chậm",
+    "Steps": "1. Throttle network\n2. Refresh trang chủ",
+    "Expected": "Hiển thị loading indicator/skeleton; giao diện không bị đứng hoặc trắng không rõ nguyên nhân"
+  },
+  {
+    "TCs ID": "D_30",
+    "Feature": "Loading",
+    "Sub-feature": "API lỗi",
+    "Test Case": "Kiểm tra giao diện khi API lấy danh sách phim bị lỗi",
+    "Pre-conditions": "API trả về HTTP 4xx/5xx",
+    "Steps": "1. Mock API lỗi1. Mock API lỗi\n2. Refresh trang",
+    "Expected": "Hệ thống hiển thị thông báo lỗi thân thiện và cho phép thử lại nếu có thiết kế hỗ trợ"
+  },
+  {
+    "TCs ID": "D_31",
+    "Feature": "Cinema List",
+    "Sub-feature": "Hiển thị danh sách rạp",
+    "Test Case": "Kiểm tra danh sách rạp được hiển thị",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách rạp phim và suất chiếu có dữ liệu",
+    "Steps": "1. Mở trang chủ\n2. Cuộn trang để thấy được danh sách rạp phim",
+    "Expected": "- Danh sách các rạp được hiển thị đầy đủ, không bị trùng hoặc chồng lấn\n- Danh sách được chia làm 3 cột: cột 1 là danh sách icon rạp phim, cột 2 cột là danh sách tên rạp phim (tên rạp phim, địa chỉ rạp phim, nút chi tiết), cột 3 là danh sách các suất chiếu phim tại rạp phim được chọn\n- Mặc định hiển thị thông tin rạp phim đầu tiên và các suất chiếu của rạp được chọn mặc định\n- Người dùng có thể chọn rạp phim khác bằng cách click vào icon rạp chiếu phim\n- Hiển thị highlight tại rạp phim mà người dùng đang chọn",
+    "Automation Status": "Automated",
+    "Results": "Passed",
+    "Test Data": "\"Phim: AVATAR 2\nRạp : CGV- Vivocity\""
+  },
+  {
+    "TCs ID": "D_32",
+    "Feature": "Cinema List",
+    "Sub-feature": "Hiển thị danh sách rạp",
+    "Test Case": "Kiểm tra hiển thị nội dung danh sách rạp phim",
+    "Pre-conditions": "Trang chủ đã load thành công\nDanh sách rạp phim và suất chiếu có dữ liệu",
+    "Steps": "1. Mở trang chủ\n2. Cuộn trang để thấy được danh sách rạp phim",
+    "Expected": "- Logo rạp phim được hiển thị rõ ràng, đúng với tên rạp phim tương ứng\n- Tên rạp hiển thị rõ ràng, đúng chính tả và đúng dữ liệu backend\n- Địa chỉ rạp hiển thị đúng; nếu quá dài thì được rút gọn hợp lý bằng dấu ...\n- Nội dung được truncate đúng giao diện; không bị tràn sang khu vực suất chiếu phim\n- Nút 'Chi tiết' có thể click vào được và điều hướng đến trang chi tiết rạp phim",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_33",
+    "Feature": "Cinema List",
+    "Sub-feature": "Chọn rạp",
+    "Test Case": "Chọn một rạp để xem lịch chiếu",
+    "Pre-conditions": "Có nhiều rạp trong danh sách",
+    "Steps": "1. Click vào icon rạp \n2. Chọn khu vực của rạp",
+    "Expected": "- Rạp được chọn có trạng thái highlight\n- Lịch chiếu bên phải được cập nhật theo rạp",
+    "Test Data": "Icon rạp: CGV\nRạp phim: CGV- Pearl Plaza"
+  },
+  {
+    "TCs ID": "D_34",
+    "Feature": "Cinema List"
+  },
+  {
+    "Feature": "Cinema List"
+  },
+  {
+    "Feature": "Cinema List"
+  }
+]

@@ -82,3 +82,10 @@ test("Verify register function with POM(Page Object Model)", async ({
   const successLbl = page.getByRole("heading", { name: "Đăng ký thành công" });
   await expect(successLbl).toBeVisible();
 });
+
+test("D_08: Kiểm tra hiển thị và điều hướng chức năng Đăng Ký", async ({ page, homePage }) => {
+  await page.goto("/");
+  const topBar = homePage.getTopBarComponent();
+  await topBar.navigateToRegisterPage();
+  await expect(page.getByRole("heading", { name: "Đăng Ký", exact: false })).toBeVisible();
+});

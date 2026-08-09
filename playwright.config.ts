@@ -33,7 +33,8 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
     baseURL:"https://demo1.cybersoft.edu.vn",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
     actionTimeout: 10000, // mặc định là 0 (không có timeout), nếu action nào chạy quá 10s sẽ bị fail
   },
 

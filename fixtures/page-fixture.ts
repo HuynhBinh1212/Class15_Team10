@@ -1,37 +1,43 @@
 import { RegisterPage } from "../page/RegisterPage";
 import { LoginPage } from "../page/LoginPage";
 import { HomePage } from "./../page/HomePage";
+import { TinTucPage } from "../page/TinTucPage";
+import { CommonPage } from "../page/CommonPage";
 import { test as base } from "@playwright/test";
 
-type MyFixture = {
+export type MyFixture = {
   homePage: HomePage;
   loginPage: LoginPage;
   registerPage: RegisterPage;
-  //thêm các page khác khi mở rộng
+  tinTucPage: TinTucPage;
+  commonPage: CommonPage;
 };
 
 export const test = base.extend<MyFixture>({
   homePage: async ({ page }, use) => {
-    //set HomePage
     const homePage = new HomePage(page);
-    //khai báo sử dụng homePage trong test
     await use(homePage);
   },
 
   loginPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
-
     await use(loginPage);
   },
 
   registerPage: async ({ page }, use) => {
-    //set RegisterPage
     const registerPage = new RegisterPage(page);
-
     await use(registerPage);
   },
 
-  //thêm các page khác khi mở rộng
+  tinTucPage: async ({ page }, use) => {
+    const tinTucPage = new TinTucPage(page);
+    await use(tinTucPage);
+  },
+
+  commonPage: async ({ page }, use) => {
+    const commonPage = new CommonPage(page);
+    await use(commonPage);
+  },
 });
 
 export { expect } from "@playwright/test";
