@@ -1,0 +1,12 @@
+Đang kiểm tra ảnh: ./logo.png
+[SUCCESS] Hình ảnh hợp lệ!
+  - Link ảnh (Ctrl + Click để xem): https://demo1.cybersoft.edu.vn/logo.png
+  - Độ phân giải: 3267 x 997 px
+  - Dung lượng: 146.11 KB
+-------------------------------------------------
+Đang kiểm tra ảnh: /static/media/avatarTix.546c691f.jpg
+[SUCCESS] Hình ảnh hợp lệ!
+  - Link ảnh (Ctrl + Click để xem): https://demo1.cybersoft.edu.vn/static/media/avatarTix.546c691f.jpg
+  - Độ phân giải: 979 x 979 px
+  - Dung lượng: 153.26 KB
+-------------------------------------------------

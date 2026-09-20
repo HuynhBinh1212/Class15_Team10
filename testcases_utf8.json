@@ -128,8 +128,8 @@
     "Test Case": "Tìm kiếm bằng chữ cái tên phim trong danh sách phim",
     "Pre-conditions": "Trang chủ đã load thành công",
     "Steps": "1. Click dropdown Phim\n2. Tại bàn phím, gõ chữ cái có trong tên phim",
-    "Expected": "Tên phim có ký tự trùng được hiển thị highlight ",
-    "Automation Status": "Cannot Auto",
+    "Expected": "Tên phim có ký tự trùng được hiển thị highlight",
+    "Automation Status": "Automated",
     "Results": "Passed",
     "Test Data": "The Gentlemen/ Man of Steel/ AVATAR 2"
   },
@@ -207,12 +207,12 @@
     "Feature": "Movie search",
     "Sub-feature": "Mua vé ngay",
     "Test Case": "Click nút 'Mua vé ngay' khi chỉ chọn Phim",
-    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim ",
+    "Pre-conditions": "Trang chủ đã load thành công\nĐã chọn Phim",
     "Steps": "1. Chọn phim\n2. Click MUA VÉ NGAY",
     "Expected": "Thông báo lỗi được xuất hiện dưới dạng modal với nội dung :\"Bạn chưa chọn Rạp. Vui lòng chọn Rạp\" cùng nút \"Đã hiểu\"\nModal lỗi sẽ biến mất khi người dùng click vào nút 'Đã hiểu\"",
     "Automation Status": "Automated",
     "Results": "Passed",
-    "Test Data": "Phim: AVATAR 2\n"
+    "Test Data": "Phim: AVATAR 2"
   },
   {
     "TCs ID": "D_19",
@@ -245,7 +245,7 @@
     "Test Case": "Kiểm tra danh sách phim trên trang chủ được hiển thị",
     "Pre-conditions": "Trang chủ đã load thành công\nDanh sách phim có dữ liệu",
     "Steps": "1. Quan sát khu vực danh sách phim",
-    "Expected": "Các thẻ phim được hiển thị theo dạng grid/list\nMỗi thẻ gồm poster, nhãn độ tuổi, tên phim và mô tả\nHình ảnh của poster được hiển thị rõ ràng",
+    "Expected": "Các thẻ phim được hiển thị theo dạng grid/list\nMỗi thẻ gồm poster, nhãn độ tuổi, tên phim và mô tả\nHình ảnh của poster được hiển thị rõ ràng\nHiển thị đầy đủ thông tin phim, phim được trả về từ API",
     "Automation Status": "Automated",
     "Results": "Failed"
   },
@@ -380,17 +380,90 @@
     "Test Case": "Chọn một rạp để xem lịch chiếu",
     "Pre-conditions": "Có nhiều rạp trong danh sách",
     "Steps": "1. Click vào icon rạp \n2. Chọn khu vực của rạp",
-    "Expected": "- Rạp được chọn có trạng thái highlight\n- Lịch chiếu bên phải được cập nhật theo rạp",
+    "Expected": "- Rạp được chọn có trạng thái highlight\n- Lịch chiếu bên phải được cập nhật theo rạp\n- Lịch chiếu hiển thị hình ảnh, nhãn phân loại độ tuổi xem phim và tên phim và các suất chiếu\n- Người dùng được điều hướng đến trang chọn ghế sau khi chọn suất chiếu",
+    "Automation Status": "Automated",
+    "Results": "Passed",
     "Test Data": "Icon rạp: CGV\nRạp phim: CGV- Pearl Plaza"
   },
   {
-    "TCs ID": "D_34",
-    "Feature": "Cinema List"
+    "TCs ID": "D_39",
+    "Feature": "Login",
+    "Sub-feature": "Authentication",
+    "Test Case": "Kiểm tra thông tin đăng nhập và thông tin profile",
+    "Pre-conditions": "Đăng nhập thành công",
+    "Steps": "1. Login thành công vào màn hình đăng nhập\n2. Verify thông tin đăng nhập và thông tin profile",
+    "Expected": "Tên đăng nhập trùng khớp với thông tin userprofile .",
+    "Automation Status": "Automated",
+    "Results": "Failed",
+    "Test Data": "testing142"
   },
   {
-    "Feature": "Cinema List"
+    "TCs ID": "D_40",
+    "Feature": "Movie Search & Listing",
+    "Sub-feature": "Danh sách phim & Trang chi tiết",
+    "Test Case": "Xem danh sách phim ở trang thứ 2, chọn phim John Cena WWE và kiểm tra hình ảnh poster/trailer phim",
+    "Pre-conditions": "Người dùng truy cập trang chủ thành công",
+    "Steps": "1. Mở trang chủ (https://demo1.cybersoft.edu.vn/).\r\n2. Cuộn đến khu vực danh sách phim.\r\n3. Bấm chuyển sang trang 2 (Pagination trang 2).\r\n4. Bấm chọn phim \"John Cena WWE\" để xem chi tiết (/detail/11413).\r\n5. Kiểm tra hiển thị hình ảnh poster/trailer phim trên trang chi tiết.",
+    "Expected": "Xem được thông hình ảnh phim và trailer phim",
+    "Automation Status": "Automated",
+    "Results": "Failed",
+    "Test Data": "John Cena WWE"
   },
   {
-    "Feature": "Cinema List"
+    "TCs ID": "D_41",
+    "Feature": "Movie Search & Listing",
+    "Sub-feature": "Danh sách phim & Trang chi tiết",
+    "Test Case": "Kiểm tra logo hiển thị tại màn hình chi tiết phim John Cena WWE",
+    "Pre-conditions": "Người dùng truy cập trang chủ thành công",
+    "Steps": "1. Mở trang chủ.\n2. Cuộn đến khu vực danh sách phim. \n3. Bấm chuyển sang trang 2 (Pagination trang 2).\n4. Bấm chọn phim 'John Cena WWE' để xem chi tiết (/detail/11413).\n5. Kiểm tra logo CyberSoft trên Header tại màn hình chi tiết phim.",
+    "Expected": "- Logo CyberSoft hiển thị đầy đủ, đúng vị trí và hình ảnh không bị lỗi",
+    "Automation Status": "Automated",
+    "Results": "Failed",
+    "Test Data": "URL: https://demo1.cybersoft.edu.vn/detail/11413"
+  },
+  {
+    "TCs ID": "2. Trang thông tin phim"
+  },
+  {
+    "TCs ID": "I_01",
+    "Feature": "Movie listing",
+    "Sub-feature": "Danh sách phim",
+    "Test Case": "Điều hướng tới trang thông tin phim",
+    "Steps": "1. Login vào trang \n2. Đăng nhập nhưng không đúng mật khẩu",
+    "Expected": "- Chức năng bấm vào link \"Quên mật khẩu\"",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_36",
+    "Feature": "News Section",
+    "Sub-feature": "Tin tức - Điện ảnh 24h",
+    "Test Case": "Kiểm tra hình ảnh lỗi sau khi click Xem Thêm trong mục Điện ảnh 24h",
+    "Pre-conditions": "Đã đăng nhập vào hệ thống CyberSoft",
+    "Steps": "1. Đăng nhập.\n 2. Cuộn màn hình tới khu vực Tin Tức.\n 3. Bấm nút 'XEM THÊM'.\n 4. Lấy tất cả thuộc tính src của các thẻ img.\n 5. Bắn Request kiểm tra HTTP.",
+    "Expected": "Tất cả các link hình ảnh phải tồn tại (trả về status HTTP 2xx). Không có ảnh nào bị chết link (ENOTFOUND) hoặc lỗi 404/500.",
+    "Automation Status": "Automated",
+    "Results": "Failed"
+  },
+  {
+    "TCs ID": "D_37",
+    "Feature": "News Section",
+    "Sub-feature": "Tin tức - Review",
+    "Test Case": "Kiểm tra hình ảnh lỗi sau khi click Xem Thêm trong mục Review",
+    "Pre-conditions": "Đã đăng nhập vào hệ thống CyberSoft",
+    "Steps": "1. Đăng nhập.\n 2. Bấm sang tab 'Review'.\n 3. Bấm nút 'XEM THÊM'.\n 4. Lấy thuộc tính src và kiểm tra HTTP.",
+    "Expected": "Tương tự, các ảnh tải thành công, không vỡ.",
+    "Automation Status": "Automated",
+    "Results": "Failed",
+    "Note": "MUI_02"
+  },
+  {
+    "TCs ID": "D_38",
+    "Feature": "News Section",
+    "Sub-feature": "Tin tức - Khuyến Mãi",
+    "Test Case": "Kiểm tra hình ảnh lỗi sau khi click Xem Thêm trong mục Khuyến Mãi",
+    "Pre-conditions": "Đã đăng nhập vào hệ thống CyberSoft",
+    "Steps": "1. Đăng nhập.\n 2. Bấm sang tab 'Khuyến Mãi'.\n 3. Bấm nút 'XEM THÊM'.\n 4. Lấy thuộc tính src và kiểm tra HTTP.",
+    "Expected": "Tương tự, tất cả ảnh khuyến mãi không bị chết link."
   }
 ]

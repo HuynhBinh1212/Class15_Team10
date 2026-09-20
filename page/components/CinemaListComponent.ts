@@ -12,12 +12,12 @@ export class CinemaListComponent extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.cinemaListContainer = page.locator('#cumRap, .cinema-list-wrapper, .cinema-container');
-        this.cinemaSystemLogos = this.cinemaListContainer.locator('.cinema-system-logo, .logo-rap, img.logo');
-        this.cinemaNames = this.cinemaListContainer.locator('.cinema-name, .ten-rap, h4');
-        this.cinemaAddresses = this.cinemaListContainer.locator('.cinema-address, .dia-chi, p');
-        this.cinemaDetailBtns = this.cinemaListContainer.locator('.btn-detail, .chi-tiet, a:has-text("Chi tiết")');
-        this.showTimesList = this.cinemaListContainer.locator('.showtime-list, .lich-chieu, .time-list');
+        this.cinemaListContainer = page.locator('.jss159, #cumRap, .cinema-list-wrapper, .cinema-container').first();
+        this.cinemaSystemLogos = page.locator('button.jss161 img, img.MuiAvatar-img, .cinema-system-logo, .logo-rap');
+        this.cinemaNames = page.locator('h4.jss165, .cinema-name, .ten-rap');
+        this.cinemaAddresses = page.locator('h6.jss166, .cinema-address, .dia-chi');
+        this.cinemaDetailBtns = page.locator('a.jss167, .btn-detail, [chi tiết]');
+        this.showTimesList = page.locator('.jss171, .jss172, .showtime-list');
     }
 
     async getCinemaSystemLogos(): Promise<Locator> {

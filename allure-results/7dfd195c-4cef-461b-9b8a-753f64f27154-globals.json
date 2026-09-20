@@ -1,0 +1,1 @@
+{"attachments":[],"errors":[{"message":"beforeEach hook failed: Test timeout of 20000ms exceeded while running \"beforeEach\" hook.","trace":"Test timeout of 20000ms exceeded while running \"beforeEach\" hook.\n    at F:\\Class15_Team10\\tests\\ui\\dashboard\\tintuc.spec.ts:6:8","timestamp":1789838312032}]}

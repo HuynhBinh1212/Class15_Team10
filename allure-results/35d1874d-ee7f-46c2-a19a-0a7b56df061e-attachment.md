@@ -1,0 +1,141 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\dashboard\moviesearch.spec.ts >> Movie Search & Listing Feature >> D_36: Kiểm tra logo hiển thị tại màn hình chi tiết phim John Cena WWE
+- Location: tests\ui\dashboard\moviesearch.spec.ts:54:7
+
+# Error details
+
+```
+Error: Hình ảnh bị lỗi cấu trúc! URL [https://demo1.cybersoft.edu.vn/detail/logo.png] trả về content-type là: text/html
+
+expect(received).toBeTruthy()
+
+Received: false
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=f1e3]:
+  - banner [ref=f1e5]:
+    - generic [ref=f1e7]:
+      - img "Logo" [ref=f1e9]
+      - generic [ref=f1e10]:
+        - heading "Lịch Chiếu" [level=4] [ref=f1e12] [cursor=pointer]
+        - heading "Cụm Rạp" [level=4] [ref=f1e14] [cursor=pointer]
+        - heading "Tin Tức" [level=4] [ref=f1e16] [cursor=pointer]
+        - heading "Ứng Dụng" [level=4] [ref=f1e18] [cursor=pointer]
+      - generic [ref=f1e19]:
+        - link [ref=f1e20] [cursor=pointer]:
+          - /url: /sign-in
+          - heading "Đăng Nhập" [level=3] [ref=f1e23]
+        - separator [ref=f1e24]
+        - link [ref=f1e25] [cursor=pointer]:
+          - /url: /sign-up
+          - heading "Đăng Ký" [level=3] [ref=f1e28]
+  - generic [ref=f1e34]:
+    - generic [ref=f1e38]:
+      - heading "02.11.2023" [level=4] [ref=f1e40]
+      - heading "John Cena WWE" [level=1] [ref=f1e42]
+      - heading "120phút" [level=5] [ref=f1e44]
+      - generic [ref=f1e45]: Mua vé
+    - generic [ref=f1e48]:
+      - generic [ref=f1e49]:
+        - progressbar [ref=f1e50]
+        - progressbar [ref=f1e54]
+        - generic [ref=f1e57]: "9"
+      - img "5 Stars"
+    - generic [ref=f1e61]:
+      - tablist [ref=f1e65]:
+        - tab [selected] [ref=f1e66] [cursor=pointer]:
+          - img "Galaxy Cinema" [ref=f1e69]
+      - tabpanel [ref=f1e72]:
+        - generic [ref=f1e74]:
+          - heading "GLX - Nguyễn Văn Quá" [level=3] [ref=f1e76]
+          - link [ref=f1e79] [cursor=pointer]:
+            - /url: /purchase/46577
+            - paragraph [ref=f1e80]: 12-10-2023
+            - paragraph [ref=f1e81]: ~
+            - paragraph [ref=f1e82]: 10:51
+```
+
+# Test source
+
+```ts
+  1  | import { Page, Locator } from "@playwright/test";
+  2  | import { expect } from "../fixtures/page-fixture";
+  3  | 
+  4  | export async function verifyImages(page: Page, images: Locator) {
+  5  |   const count = await images.count();
+  6  |   expect(count).toBeGreaterThan(0);
+  7  | 
+  8  |   for (let i = 0; i < count; i++) {
+  9  |     const img = images.nth(i);
+  10 |     await expect(img).toBeVisible();
+  11 | 
+  12 |     // Lấy URL của thuộc tính src
+  13 |     const src = await img.getAttribute('src');
+  14 |     expect(src, "Hình ảnh bị thiếu thuộc tính src").toBeTruthy();
+  15 | 
+  16 |     if (src) {
+  17 |       console.log(`Đang kiểm tra ảnh: ${src}`);
+  18 |       
+  19 |       // Kiểm tra thuộc tính src xem có chứa chuỗi lỗi do render sai dữ liệu không
+  20 |       expect(src).not.toContain("undefined");
+  21 |       expect(src).not.toContain("null");
+  22 |       expect(src.toLowerCase()).not.toContain("error");
+  23 |       
+  24 |       // Lấy URL tuyệt đối dựa trên URL hiện tại của trang
+  25 |       const url = new URL(src, page.url()).toString();
+  26 |       
+  27 |       // Gửi request tới URL để kiểm tra (chạy ngầm)
+  28 |       let response;
+  29 |       try {
+  30 |         response = await page.request.get(url);
+  31 |       } catch (error) {
+  32 |         // Bắt lỗi nếu đường link chết (VD: ENOTFOUND do tên miền không tồn tại)
+  33 |         expect(false, `Đường link không tồn tại hoặc không thể truy cập! URL: ${url}`).toBeTruthy();
+  34 |         continue; // Dừng kiểm tra các bước tiếp theo cho ảnh này
+  35 |       }
+  36 |       
+  37 |       // Mở URL trên một Tab mới để kiểm tra hiển thị thực tế
+  38 |       const newTab = await page.context().newPage();
+  39 |       await newTab.goto(url);
+  40 |       await newTab.waitForTimeout(500); // Dừng nửa giây để bạn có thể nhìn thấy ảnh hiển thị
+  41 |       await newTab.close(); // Đóng tab sau khi xem xong
+  42 | 
+  43 |       // Nếu URL trả về lỗi (như 404, 500), response.ok() sẽ là false
+  44 |       expect(response.ok(), `Hình ảnh bị lỗi! URL [${url}] trả về mã trạng thái ${response.status()}`).toBeTruthy();
+  45 |       
+  46 |       // Kiểm tra Content-Type
+  47 |       const headers = response.headers();
+  48 |       const contentType = headers['content-type'] || '';
+> 49 |       expect(contentType.startsWith('image/'), `Hình ảnh bị lỗi cấu trúc! URL [${url}] trả về content-type là: ${contentType}`).toBeTruthy();
+     |                                                                                                                                 ^ Error: Hình ảnh bị lỗi cấu trúc! URL [https://demo1.cybersoft.edu.vn/detail/logo.png] trả về content-type là: text/html
+  50 |       
+  51 |       // Lấy độ phân giải (chiều rộng, chiều cao)
+  52 |       const { width, height } = await img.evaluate((image: HTMLImageElement) => ({
+  53 |         width: image.naturalWidth,
+  54 |         height: image.naturalHeight
+  55 |       }));
+  56 | 
+  57 |       // Lấy dung lượng file (tính bằng KB)
+  58 |       const contentLength = headers['content-length'];
+  59 |       const sizeKB = contentLength ? (parseInt(contentLength) / 1024).toFixed(2) + " KB" : "Không xác định";
+  60 | 
+  61 |       console.log(`[SUCCESS] Hình ảnh hợp lệ!`);
+  62 |       console.log(`  - Link ảnh (Ctrl + Click để xem): ${url}`);
+  63 |       console.log(`  - Độ phân giải: ${width} x ${height} px`);
+  64 |       console.log(`  - Dung lượng: ${sizeKB}`);
+  65 |       console.log(`-------------------------------------------------`);
+  66 |     }
+  67 |   }
+  68 | }
+  69 | 
+```

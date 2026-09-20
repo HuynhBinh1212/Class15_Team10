@@ -1,0 +1,104 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\dashboard\dashboard.spec.ts >> Dashboard Feature >> Movie Search (Quick Booking Bar) >> D_20: Kiểm tra tìm kiếm suất chiếu với đầy đủ thông tin
+- Location: tests\ui\dashboard\dashboard.spec.ts:104:9
+
+# Error details
+
+```
+Test timeout of 20000ms exceeded.
+```
+
+```
+TimeoutError: locator.selectOption: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('select[name="cinema"]')
+    - locator resolved to <select name="cinema" aria-invalid="false" class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input">…</select>
+  - attempting select option action
+    - waiting for element to be visible and enabled
+
+```
+
+# Test source
+
+```ts
+  1  | import { Locator, Page } from "@playwright/test";
+  2  | import { BasePage } from "../BasePage";
+  3  | import { TimeOutConstants } from "../../constants/TimeOutConstants";
+  4  | 
+  5  | export class MovieSearchComponent extends BasePage {
+  6  |     readonly ddlPhim: Locator;
+  7  |     readonly ddlRap: Locator;
+  8  |     readonly ddlNgayGioChieu: Locator;
+  9  |     readonly btnMuaVeNgay: Locator;
+  10 |     
+  11 |     // For handling dropdown selections
+  12 |     readonly optionList: Locator;
+  13 |     readonly searchInput: Locator;
+  14 | 
+  15 |     readonly btnNextPagination: Locator;
+  16 |     readonly movieListContainer: Locator;
+  17 | 
+  18 |     constructor(page: Page) {
+  19 |         super(page);
+  20 |         this.ddlPhim = page.locator('select[name="film"]');
+  21 |         this.ddlRap = page.locator('select[name="cinema"]');
+  22 |         this.ddlNgayGioChieu = page.locator('select[name="date"]');
+  23 |         this.btnMuaVeNgay = page.locator('button.jss191, button:has-text("MUA VÉ NGAY")').first();
+  24 |         this.optionList = page.locator('select[name="film"] option, select[name="cinema"] option, select[name="date"] option');
+  25 |         this.searchInput = page.locator('select[name="film"]');
+  26 |         this.btnNextPagination = page.locator('button.jss90').last();
+  27 |         this.movieListContainer = page.locator('.jss81, a[href*="/detail/"]');
+  28 |     }
+  29 | 
+  30 |     async clickDropdown(dropdownLocator: Locator, timeOut: number = TimeOutConstants.TIME_OUT_DEFAULT) {
+  31 |         await dropdownLocator.waitFor({ state: 'visible', timeout: timeOut });
+  32 |     }
+  33 | 
+  34 |     async selectFirstValidOption(selectLocator: Locator) {
+  35 |         await selectLocator.waitFor({ state: 'visible' });
+  36 |         const options = await selectLocator.locator('option').all();
+  37 |         for (let i = 0; i < options.length; i++) {
+  38 |             const val = await options[i].getAttribute('value');
+  39 |             const disabled = await options[i].getAttribute('disabled');
+  40 |             if (val && disabled === null) {
+> 41 |                 await selectLocator.selectOption(val);
+     |                                     ^ TimeoutError: locator.selectOption: Timeout 10000ms exceeded.
+  42 |                 return val;
+  43 |             }
+  44 |         }
+  45 |         if (options.length > 1) {
+  46 |             const val = await options[1].getAttribute('value');
+  47 |             if (val) await selectLocator.selectOption(val);
+  48 |             return val;
+  49 |         }
+  50 |         return null;
+  51 |     }
+  52 | 
+  53 |     async selectOption(optionName: string, timeOut: number = TimeOutConstants.TIME_OUT_DEFAULT) {
+  54 |         const option = this.optionList.filter({ hasText: optionName }).first();
+  55 |         if (await option.isVisible()) {
+  56 |             await this.click(option, timeOut);
+  57 |         }
+  58 |     }
+  59 | 
+  60 |     async clickMuaVeNgay(timeOut: number = TimeOutConstants.TIME_OUT_DEFAULT) {
+  61 |         await this.click(this.btnMuaVeNgay, timeOut);
+  62 |     }
+  63 | 
+  64 |     async clickNextPagination(timeOut: number = TimeOutConstants.TIME_OUT_DEFAULT) {
+  65 |         await this.click(this.btnNextPagination, timeOut);
+  66 |     }
+  67 | 
+  68 |     async clickMovieCardByName(movieName: string, timeOut: number = TimeOutConstants.TIME_OUT_DEFAULT) {
+  69 |         await this.click(this.movieListContainer.first(), timeOut);
+  70 |     }
+  71 | }
+  72 | 
+```

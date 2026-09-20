@@ -1,0 +1,128 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\dashboard\dashboard.spec.ts >> Dashboard Feature >> Movie Listing >> D_21: Kiểm tra danh sách phim trên trang chủ được hiển thị
+- Location: tests\ui\dashboard\dashboard.spec.ts:121:9
+
+# Error details
+
+```
+Test timeout of 20000ms exceeded while running "beforeEach" hook.
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect } from "../../../fixtures/page-fixture";
+  2   | import { verifyImages } from "../../../utils/ImageHelper";
+  3   | 
+  4   | test.describe("Dashboard Feature", () => {
+  5   | 
+> 6   |   test.beforeEach(async ({ page }) => {
+      |        ^ Test timeout of 20000ms exceeded while running "beforeEach" hook.
+  7   |     await page.goto("/");
+  8   |   });
+  9   | 
+  10  |   test.describe("Banner", () => {
+  11  |     test("D_09: Kiểm tra slider banner hiển thị hình ảnh", async ({ page }) => {
+  12  |       const bannerImg = page.locator('.slick-slider img, .carousel img').first();
+  13  |       await expect(bannerImg, "Kiểm tra banner hiển thị").toBeVisible();
+  14  |       await verifyImages(page, bannerImg);
+  15  |     });
+  16  |   });
+  17  | 
+  18  |   test.describe("Movie Search (Quick Booking Bar)", () => {
+  19  |     test("D_10: Kiểm tra dropdown Phim hiển thị danh sách phim", async ({ homePage }) => {
+  20  |       const searchComp = homePage.getMovieSearchComponent();
+  21  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  22  |       await expect(searchComp.optionList.first()).toBeVisible();
+  23  |     });
+  24  | 
+  25  |     test("D_11: Tìm kiếm bằng chữ cái tên phim trong danh sách phim", async ({ page, homePage }) => {
+  26  |       const searchComp = homePage.getMovieSearchComponent();
+  27  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  28  |       await page.keyboard.type("Avatar");
+  29  |       await page.waitForTimeout(500);
+  30  |       await expect(searchComp.optionList.first()).toBeVisible();
+  31  |     });
+  32  | 
+  33  |     test("D_12: Kiểm tra dropdown Rạp hiển thị danh sách rạp khi chưa chọn Phim", async ({ homePage }) => {
+  34  |       const searchComp = homePage.getMovieSearchComponent();
+  35  |       await searchComp.clickDropdown(searchComp.ddlRap);
+  36  |       await expect(searchComp.optionList).not.toBeVisible();
+  37  |     });
+  38  | 
+  39  |     test("D_13: Kiểm tra dropdown Rạp hiển thị danh sách rạp khi đã chọn Phim", async ({ page, homePage }) => {
+  40  |       const searchComp = homePage.getMovieSearchComponent();
+  41  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  42  |       if (await searchComp.optionList.first().isVisible()) {
+  43  |         await searchComp.optionList.first().click();
+  44  |         await searchComp.clickDropdown(searchComp.ddlRap);
+  45  |         await expect(searchComp.optionList.first()).toBeVisible();
+  46  |       }
+  47  |     });
+  48  | 
+  49  |     test("D_14: Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu khi chưa chọn Phim và Rạp", async ({ homePage }) => {
+  50  |       const searchComp = homePage.getMovieSearchComponent();
+  51  |       await searchComp.clickDropdown(searchComp.ddlNgayGioChieu);
+  52  |       await expect(searchComp.optionList).not.toBeVisible();
+  53  |     });
+  54  | 
+  55  |     test("D_15: Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu đã chọn Phim và Rạp", async ({ page, homePage }) => {
+  56  |       const searchComp = homePage.getMovieSearchComponent();
+  57  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  58  |       await searchComp.optionList.first().click();
+  59  |       await searchComp.clickDropdown(searchComp.ddlRap);
+  60  |       await searchComp.optionList.first().click();
+  61  |       await searchComp.clickDropdown(searchComp.ddlNgayGioChieu);
+  62  |       await expect(searchComp.optionList.first(), "Kỳ vọng hiển thị suất chiếu khi chọn Phim và Rạp").toBeVisible();
+  63  |     });
+  64  | 
+  65  |     test("D_16: Kiểm tra dropdown Ngày giờ chiếu hiển thị các suất chiếu khi chỉ chọn Phim", async ({ homePage }) => {
+  66  |       const searchComp = homePage.getMovieSearchComponent();
+  67  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  68  |       if (await searchComp.optionList.first().isVisible()) {
+  69  |         await searchComp.optionList.first().click();
+  70  |         await searchComp.clickDropdown(searchComp.ddlNgayGioChieu);
+  71  |         await expect(searchComp.optionList).not.toBeVisible();
+  72  |       }
+  73  |     });
+  74  | 
+  75  |     test("D_17: Click nút 'Mua vé ngay' khi chưa chọn Phim + Rạp + Ngày giờ chiếu", async ({ page, homePage }) => {
+  76  |       const searchComp = homePage.getMovieSearchComponent();
+  77  |       await searchComp.clickMuaVeNgay();
+  78  |     });
+  79  | 
+  80  |     test("D_18: Click nút 'Mua vé ngay' khi chỉ chọn Phim", async ({ page, homePage }) => {
+  81  |       const searchComp = homePage.getMovieSearchComponent();
+  82  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  83  |       if (await searchComp.optionList.first().isVisible()) {
+  84  |         await searchComp.optionList.first().click();
+  85  |         await searchComp.clickMuaVeNgay();
+  86  |       }
+  87  |     });
+  88  | 
+  89  |     test("D_19: Click nút 'Mua vé ngay' khi chỉ chọn Phim + Rạp", async ({ page, homePage }) => {
+  90  |       const searchComp = homePage.getMovieSearchComponent();
+  91  |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  92  |       if (await searchComp.optionList.first().isVisible()) {
+  93  |         await searchComp.optionList.first().click();
+  94  |         await searchComp.clickDropdown(searchComp.ddlRap);
+  95  |         if (await searchComp.optionList.first().isVisible()) {
+  96  |           await searchComp.optionList.first().click();
+  97  |           await searchComp.clickMuaVeNgay();
+  98  |         }
+  99  |       }
+  100 |     });
+  101 | 
+  102 |     test("D_20: Kiểm tra tìm kiếm suất chiếu với đầy đủ thông tin", async ({ page, homePage }) => {
+  103 |       const searchComp = homePage.getMovieSearchComponent();
+  104 |       await searchComp.clickDropdown(searchComp.ddlPhim);
+  105 |       if (await searchComp.optionList.first().isVisible()) {
+  106 |         await searchComp.optionList.first().click();
+```

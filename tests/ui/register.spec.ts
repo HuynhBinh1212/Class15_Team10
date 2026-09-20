@@ -87,5 +87,5 @@ test("D_08: Kiểm tra hiển thị và điều hướng chức năng Đăng Ký
   await page.goto("/");
   const topBar = homePage.getTopBarComponent();
   await topBar.navigateToRegisterPage();
-  await expect(page.getByRole("heading", { name: "Đăng Ký", exact: false })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Đăng Ký", exact: false }).first()).toBeVisible();
 });
